@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Passion+One');
+
+body {
+	font-size: 18px;
+	font-family: 'Raleway', sans-serif;
+
+}
+
+.submit-btn {
+	text-align: center;
+}
+
+#add_stylists, #add_clients {
+	margin-top: 10%;
+	margin-bottom: 20%;
+}
+
+#clients-available {
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+nav .brand-logo {
+	font-family: monospace, monospace;
+
+}

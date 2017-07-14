@@ -1,0 +1,16 @@
+<div class=row>
+	<div class="col-md-5">
+		<h2>Manage Stylist <%= @stylist.sname%></h2>
+		<h4>Assign Clients to Stylist</h4>
+		<form class="form-group" method="post" action="/owner/stylist/<%=@stylist.id%>">
+			<label>Select Client Available</label>
+			<div class="input-field">
+			<select name="select" id="select">
+				<% @clients.each do |client|%>
+				<option value="<%= client.id%>"><%= client.cname%></option>
+				<% end %>
+			</select>
+			</div>
+		</form>
+	</div>
+</div>
