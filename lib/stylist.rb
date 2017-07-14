@@ -28,4 +28,23 @@ class Stylist
 		end
 		found_stylist
 	end
+
+	def add_client(client_id)
+		id=self.id.to_i
+		DB.exec("UPDATE clients SET stylist_id=#{id} WHERE id=#{client_id};")
+	end
+
+	def assigned_clients()
+		array=[]
+		selfid=self.id.to_i
+		result=DB.exec("SELECT * FROM clients WHERE stylist_id=#{selfid};")
+		result.each do |client|
+			id=client.fetch('id').to_i
+			cname=client.fetch('name')
+			phone=client.fetch('phone')
+			newc=Client.new({:id=>id,:name=>cname, :phone=>phone})
+			array.push(newc)
+		end
+		array
+	end
 end
