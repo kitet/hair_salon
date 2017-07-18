@@ -1,7 +1,7 @@
 
 <div class="container" id="clients-available">
 	<ul class="collection with-header">
-		<li class="collection-header"><h4>Clients Available</h4></li>
+		<li class="collection-header"><h4>Stylists Available</h4></li>
 		<% @stylists.each do |stylist|%>
 		<li class="collection-item"><a href="/owner/stylist/<%= stylist.id%>"><p><%= stylist.sname%></p></a>
 		<% end %>
