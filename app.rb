@@ -35,7 +35,7 @@ end
 get '/owner/stylist/:id' do
 	@stylist=Stylist.find(params.fetch('id').to_i)
 	@clients=Client.all
-	@clients=@stylist.assigned_clients
+	@assigned_clients=@stylist.assigned_clients
 	erb :stylist
 end
 
@@ -43,8 +43,10 @@ post '/owner/stylist/:id' do
 	@stylist=Stylist.find(params.fetch('id').to_i)
 	@client_id=params.fetch('select').to_i
 	@stylist.add_client(@client_id)
-	@clients=@stylist.assigned_clients
-	redirect '/owner/stylist/#{@stylist.id}'
+	@assigned_clients=@stylist.assigned_clients
+	#redirect '/owner/stylist/#{@stylist.id}'
+	@clients=Client.all
+	erb :stylist
 end
 
 get '/owner/client/:id' do
