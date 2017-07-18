@@ -9,7 +9,8 @@ class Client
 
 	#method to save created Client object to db
 	def save
-		DB.exec("INSERT INTO clients (name,phone) VALUES ('#{@cname}','#{@phone}');")
+		result=DB.exec("INSERT INTO clients (name,phone) VALUES ('#{@cname}','#{@phone}') RETURNING id;")
+		@id=result.first.fetch('id').to_i
 	end
 
 	def self.all
@@ -32,4 +33,9 @@ class Client
 		end
 		found_client
 	end
+	#code to compare instances of the class
+	def ==(client)
+	 (self.class==client.class) && (self.cname==client.cname)
+	end
 end
+
