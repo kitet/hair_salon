@@ -14,7 +14,7 @@ class Client
 
 	def self.all
 		clients=[]
-		query_result=DB.exec("SELECT * FROM clients;")
+		query_result=DB.exec("SELECT * FROM clients WHERE stylist_id IS NULL;")
 		query_result.each do |client|
 			cname=client.fetch('name')
 			id=client.fetch('id')
