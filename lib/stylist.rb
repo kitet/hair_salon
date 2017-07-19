@@ -42,9 +42,9 @@ class Stylist
 
 	#method to update the attributes of the object in the database
 	def update(attributes)
-	 @name=attributes.fetch(:name)
+	 @sname=attributes.fetch(:name)
 	 @id=self.id.to_i
-	 DB.exec("UPDATE stylists SET name='#{@name}' WHERE id=#{@id};")
+	 DB.exec("UPDATE stylists SET name='#{@sname}' WHERE id=#{@id};")
 	end
 
 	def assigned_clients()
