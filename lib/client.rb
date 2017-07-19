@@ -12,7 +12,7 @@ class Client
 		result=DB.exec("INSERT INTO clients (name,phone) VALUES ('#{@cname}','#{@phone}') RETURNING id;")
 		@id=result.first.fetch('id').to_i
 	end
-
+	#code to return all clients that have not been assigned
 	def self.all
 		clients=[]
 		query_result=DB.exec("SELECT * FROM clients WHERE stylist_id IS NULL;")
@@ -25,7 +25,7 @@ class Client
 		end
 		clients
 	end
-
+	#code to find client by id
 	def self.find(id)
 		found_client=nil
 		Client.all.each do |client|
@@ -43,7 +43,7 @@ class Client
 	 @id=self.id.to_i
 	 DB.exec("UPDATE clients SET name ='#{@name}' WHERE id=#{@id};")
 	end
-
+	#method to delete client from the database using the id as condition
 	def delete
 	 DB.exec("DELETE FROM clients WHERE id=#{self.id.to_i};")
 	end
