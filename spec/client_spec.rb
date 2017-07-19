@@ -18,7 +18,7 @@ RSpec.describe Client do
     client1=Client.new(name: 'Patrick Lumumba', id: nil, phone: 747487)
     client1.save
     client1.update(name: 'P.L.O Lumumba')
-    expect(client1.cname).to eq 'P.L.O Lumumba'
+    expect(client1.cname).to eq ('P.L.O Lumumba')
   end
 
   #test to on delete method
