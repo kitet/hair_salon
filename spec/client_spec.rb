@@ -30,10 +30,5 @@ RSpec.describe Client do
     client1.delete
     expect(Client.all).to eq [client2]
   end
-
-  #delete stylist details from teb database and update the clients id to disassociate the two
-  it 'update the clients table removing association and deletes the stylist usinf id as unique identifyier' do
-    
-  end
  end
 end
