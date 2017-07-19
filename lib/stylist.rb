@@ -4,9 +4,15 @@ class Stylist
 		@id=stylist_attrb.fetch(:id)
 		@sname=stylist_attrb.fetch(:name)
 	end
-
+	#method to save the stylist object to the database
 	def save
-		DB.exec("INSERT INTO stylists (name) VALUES ('#{@sname}');")
+		result=DB.exec("INSERT INTO stylists (name) VALUES ('#{@sname}') RETURNING id;")
+		@id=result.first.fetch('id').to_i
+	end
+
+	#code to compare instances of the class
+	def ==(stylist)
+	 (self.class==stylist.class) && (self.sname==stylist.sname)
 	end
 
 	def self.all
@@ -28,10 +34,17 @@ class Stylist
 		end
 		found_stylist
 	end
-
+	#method to add client to the stylist...thus creating association
 	def add_client(client_id)
 		id=self.id.to_i
 		DB.exec("UPDATE clients SET stylist_id=#{id} WHERE id=#{client_id};")
+	end
+
+	#method to update the attributes of the object in the database
+	def update(attributes)
+	 @name=attributes.fetch(:name)
+	 @id=self.id.to_i
+	 DB.exec("UPDATE stylists SET name='#{@name}' WHERE id=#{@id};")
 	end
 
 	def assigned_clients()

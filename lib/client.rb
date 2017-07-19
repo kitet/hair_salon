@@ -39,9 +39,9 @@ class Client
 	end
 	#method to update name as the only parameter changeable
 	def update(attributes)
-	 @name=attributes.fetch(:name)
+	 @cname=attributes.fetch(:name)
 	 @id=self.id.to_i
-	 DB.exec("UPDATE clients SET name ='#{@name}' WHERE id=#{@id};")
+	 DB.exec("UPDATE clients SET name ='#{@cname}' WHERE id=#{@id};")
 	end
 	#method to delete client from the database using the id as condition
 	def delete
