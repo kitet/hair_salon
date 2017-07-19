@@ -16,9 +16,10 @@ RSpec.describe Stylist do
 
   #update method to check if it updates stylist object representation in the db
   it 'updates the object attributes in the database' do
-    stylist1.Stylist.new(name: 'Stylist A', id:nil)
+    stylist1=Stylist.new(name: 'Stylist A', id:nil)
     stylist1.save
-    stylist1.update(name:)
+    stylist1.update(name: "Stylist B")
+    expect(stylist1.sname).to eq 'Stylist B'
   end
 
   #test on the delete method
