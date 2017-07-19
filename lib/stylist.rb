@@ -60,4 +60,10 @@ class Stylist
 		end
 		array
 	end
+	def delete
+	 #firstly remove alll the association that this stylist has in the clients table
+	 DB.exec("UPDATE clients SET stylist_id=NULL WHERE stylist_id=#{self.id.to_i};")
+	 #delete from the database aftr the relation is  broken with clients table
+	 DB.exec("DELETE FROM stylists WHERE id=#{self.id.to_i};")
+	end
 end
